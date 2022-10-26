@@ -10,15 +10,15 @@ function Home(){
                 }
 
     return(
-        <main className="scroll bg-primary-dark w-[55%] overflow-y-scroll h-screen shrink-0" >
-            <section className="px-6 h-[450px] bg-center bg-cover bg-no-repeat" style={style}>
+        <main className="scroll bg-primary-dark w-[calc(100%-3rem)] md:w-4/5 lg:w-[55%] overflow-y-scroll h-screen shrink-0" >
+            <section className="h-[450px] bg-center bg-cover bg-no-repeat" style={style}>
                 <Header />
-                <div className="mt-12" >
-                    <h2 className="text-[2.5rem] leading-[150%] font-semibold text-white max-w-[455px] mb-6">Doctor Strange in the Multiverse of Madness</h2>
+                <div className="mt-12 px-4 sm:px-6" >
+                    <h2 className="text-2xl sm:text-[2rem] md:text-[2.5rem] sm:leading-[150%] font-semibold text-white max-w-[455px] mb-6">Doctor Strange in the Multiverse of Madness</h2>
                     <Label title='Action' />
                     <Label title='Adventure' />
                     <Label title='Fantasy' />
-                    <button className="block bg-primary-red text-white py-3 px-10 rounded-full">Watch <i className="fa-solid fa-circle-play ml-4"></i></button>
+                    <button className="block bg-primary-red text-white py-3 px-10 mt-8 rounded-full">Watch <i className="fa-solid fa-circle-play ml-4"></i></button>
                 </div>
             </section>
             <section className="p-6">

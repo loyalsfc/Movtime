@@ -30,4 +30,7 @@
   .movies-container{
     @apply scroll w-full flex gap-x-4 flex-nowrap overflow-scroll
   }
+  .nav-title{
+    @apply hidden md:block tracking-wide text-white/[0.7] pl-3 lg:pl-9 mb-5
+  }
 }

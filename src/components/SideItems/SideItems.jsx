@@ -2,7 +2,7 @@ import WatchItem from "./WatchItems"
 
 function SideItems(){
     return(
-        <aside className="scroll py-6 pl-8 bg-secondary-dark w-1/4 shrink-0 h-screen overflow-y-scroll">
+        <aside className="scroll hidden lg:block py-6 px-8 bg-secondary-dark w-1/4 shrink-0 h-screen overflow-y-scroll">
             <header className="flex items-center text-white mb-6" >
                 <div className="mr-7 relative">
                     <i className="fa-solid fa-bell"></i>
