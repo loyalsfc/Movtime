@@ -1,13 +1,17 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import Sidebar from './components/Sidebar'
+import SideItems from './components/SideItems/SideItems'
+import Home from './pages/Home/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App bg-black text-white">
-      
+    <div className='bg-secondary-dark'>
+      <div className='flex container mx-auto'>
+        <Sidebar />
+        <Home />
+        <SideItems />
+      </div>
     </div>
   )
 }
