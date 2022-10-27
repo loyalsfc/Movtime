@@ -34,3 +34,16 @@
     @apply hidden md:block tracking-wide text-white/[0.7] pl-3 lg:pl-9 mb-5
   }
 }
+
+.active::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: rotate(90deg) translateX(-50%);
+  height: 10px;
+  width: 0;
+  border-bottom: 10px solid #F8242F;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}

@@ -12,7 +12,7 @@ function Sidebar(){
             <nav>
                 <h4 className='nav-title'>MENU</h4>
                 <ul>
-                    <NavItem name="Browse" icon="fa-brands fa-bandcamp" bold="font-medium"/>
+                    <NavItem name="Browse" icon="fa-brands fa-bandcamp" bold="font-medium active"/>
                     <NavItem name="Watchlist" icon="fa-solid fa-clapperboard" />
                     <NavItem name="Coming Soon" icon="fa-solid fa-calendar" />                    
                 </ul>

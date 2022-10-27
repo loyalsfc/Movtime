@@ -1,12 +1,51 @@
+import { useEffect, useState } from "react"
 import Header from "../../components/Header"
 import Label from "./Labels"
 import TopRated from "./TopRated"
 import Trending from "./Trending"
 
 function Home(){
+    const key = 'ac9b441e9078e7b82089a236ca889b53'
+    const imagePath = 'https://image.tmdb.org/t/p/w500' 
+    const [topRatedMovies, settopRatedMovies] = useState([])
+    const [trendingMovies, setTrendingMovies] = useState([])
+
+    useEffect (() => {
+        // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)
+        // .then((res, req) => res.json())
+        // .then(data => settopRatedMovies(data.results))
+
+        // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
+        // .then((res, req) => res.json())
+        // .then(data => setTrendingMovies(data.results))
+    },[])
+
+    console.log(topRatedMovies)
+
+    const topRatedDisplay = topRatedMovies.map(item => {
+        return(
+            <TopRated 
+                key={item.id}
+                imgSrc = {imagePath + item.poster_path} 
+                title = {item.title}
+            />
+        )
+    })
+
+    const trendingDisplay = trendingMovies.map(item => {
+        return(
+            <Trending 
+                key={item.id}
+                imgUrl = {imagePath + item.backdrop_path} 
+                title = {item.title}
+                year = {item.release_date.split('-')[0]}
+                label = 'Movies'
+            />
+        )
+    })
+
     const style = {
                     backgroundImage: "linear-gradient(135deg, rgba(25,24,23,0.95) 40%, rgba(0,0,0,0)), url('https://cdn.mos.cms.futurecdn.net/NJXQ8h3mUd9mhsh2m8xpba.jpg')",
-                    
                 }
 
     return(
@@ -24,24 +63,13 @@ function Home(){
             <section className="p-6">
                 <h3 className="text-white font-bold mb-3">Trending Movies</h3>
                 <div className="movies-container">
-                    <Trending />
-                    <Trending />
-                    <Trending />
-                    <Trending />
+                    {trendingDisplay}
                 </div>
             </section>
             <section className="p-6">
                 <h3 className="text-white font-bold mb-3">Top Rated Movies</h3>
                 <div className="movies-container">
-                    <TopRated />
-                    <TopRated />
-                    <TopRated />
-                    <TopRated />
-                    <TopRated />
-                    <TopRated />
-                    <TopRated />
-                    <TopRated />
-                    <TopRated />
+                    {topRatedDisplay}
                 </div>
             </section>
         </main>
