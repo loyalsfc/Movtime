@@ -26,6 +26,7 @@ function Home(){
         return(
             <TopRated 
                 key={item.id}
+                id={item.id}
                 imgSrc = {imagePath + item.poster_path} 
                 title = {item.title}
             />
@@ -36,6 +37,7 @@ function Home(){
         return(
             <Trending 
                 key={item.id}
+                id={item.id}
                 imgUrl = {imagePath + item.backdrop_path} 
                 title = {item.title}
                 year = {item.release_date.split('-')[0]}

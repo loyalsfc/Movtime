@@ -33,6 +33,9 @@
   .nav-title{
     @apply hidden md:block tracking-wide text-white/[0.7] pl-3 lg:pl-9 mb-5
   }
+  .movie-tag{
+    @apply px-2.5 py-1 text-primary-red border border-primary-red rounded-xl mr-4 text-sm
+  }
 }
 
 .active::before{

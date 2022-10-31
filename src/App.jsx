@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import Sidebar from './components/SideBar/Sidebar'
 import SideItems from './components/SideItems/SideItems'
 import Home from './pages/Home/Home'
