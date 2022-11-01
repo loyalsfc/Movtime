@@ -4,7 +4,7 @@ import Label from "./Labels"
 import TopRated from "./TopRated"
 import Trending from "./Trending"
 
-function Home(){
+function Dashboard(){
     const key = 'ac9b441e9078e7b82089a236ca889b53'
     const imagePath = 'https://image.tmdb.org/t/p/w500' 
     const [topRatedMovies, settopRatedMovies] = useState([])
@@ -78,4 +78,4 @@ function Home(){
     )
 }
 
-export default Home
+export default Dashboard
