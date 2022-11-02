@@ -2,7 +2,6 @@ import { useEffect, useContext, useState } from "react"
 import { useParams } from "react-router-dom"
 import SideHeader from "../../components/SideItems/SideBarHeader"
 import { Context } from "../../Context"
-import TopRated from "../Home/TopRated"
 import RelatedMovieItem from "./RelatedMovieItem"
 
 function RelativedMovie(){

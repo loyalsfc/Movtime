@@ -1,4 +1,4 @@
-import MovieTitle from "../Home/MovieTitle"
+import MovieTitle from "../Dashboard/MovieTitle"
 import { Link } from "react-router-dom"
 
 function RelatedMovieItem({imgSrc, title, id}){

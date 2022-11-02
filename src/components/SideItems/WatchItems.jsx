@@ -1,4 +1,4 @@
-import MovieTitle from "../../pages/Home/MovieTitle";
+import MovieTitle from "../../pages/Dashboard/MovieTitle";
 
 function WatchItem({imgsrc, title, label}){
     return(
