@@ -11,9 +11,9 @@ function RelativedMovie(){
 
 
     useEffect(()=>{
-        // fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`)
-        // .then(res => res.json())
-        // .then(data => setSimilarMovie(data.results))
+        fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`)
+        .then(res => res.json())
+        .then(data => setSimilarMovie(data.results))
 
         fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}&language=en-US`) 
         .then(res => res.json())

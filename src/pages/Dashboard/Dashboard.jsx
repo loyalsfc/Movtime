@@ -11,13 +11,13 @@ function Dashboard(){
     const [trendingMovies, setTrendingMovies] = useState([])
 
     useEffect (() => {
-        // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)
-        // .then((res, req) => res.json())
-        // .then(data => settopRatedMovies(data.results))
+        fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)
+        .then((res, req) => res.json())
+        .then(data => settopRatedMovies(data.results))
 
-        // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
-        // .then((res, req) => res.json())
-        // .then(data => setTrendingMovies(data.results))
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
+        .then((res, req) => res.json())
+        .then(data => setTrendingMovies(data.results))
     },[])
 
     console.log(topRatedMovies)

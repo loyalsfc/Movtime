@@ -12,13 +12,13 @@ function MoviePage(){
     useState
 
     useEffect(()=>{
-        // fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)
-        // .then((res, req) => res.json())
-        // .then(data => setMovieDetail(data))
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)
+        .then((res, req) => res.json())
+        .then(data => setMovieDetail(data))
 
-        // fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${key}&language=en-US&page=1`)
-        // .then((res, req) => res.json())
-        // .then(data => console.log(data))
+        fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${key}&language=en-US&page=1`)
+        .then((res, req) => res.json())
+        .then(data => console.log(data))
     }, [])
 
     function getDuration(duration){
