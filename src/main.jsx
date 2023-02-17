@@ -10,6 +10,8 @@ import { ContextProvider } from './Context'
 import Home from './pages/landingpages/Home'
 import Register from './pages/landingpages/Register'
 import Login from './pages/landingpages/Login'
+import { Provider } from 'react-redux'
+import { store } from './app/store'
 
 const router = createBrowserRouter([
   {
@@ -35,9 +37,9 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ContextProvider>
+  <Provider store={store}>
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
-  </ContextProvider>
+  </Provider>
 )

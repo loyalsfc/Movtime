@@ -20,8 +20,6 @@ function Dashboard(){
         .then(data => setTrendingMovies(data.results))
     },[])
 
-    console.log(topRatedMovies)
-
     const topRatedDisplay = topRatedMovies.map(item => {
         return(
             <TopRated 

@@ -53,7 +53,7 @@ function Home(){
                 </svg>
             </div>
             <Link to="/register">
-                <button className="text-2xl h-16 px-6 bg-primary-red text-white"><span>Get Started</span> <i className="fa-solid fa-angle-right"></i></button>
+                <button className="text-2xl h-16 px-6 bg-primary-red text-white hover:opacity-80"><span>Get Started</span> <i className="fa-solid fa-angle-right"></i></button>
             </Link>
         </div>
     )

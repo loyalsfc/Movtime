@@ -20,7 +20,6 @@ function RelativedMovie(){
         .then(data => console.log(data.results))
     },[])
 
-    console.log(similarMovie)
     const movies = similarMovie.map(item => {
         return(
             <RelatedMovieItem 

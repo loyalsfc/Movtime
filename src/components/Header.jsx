@@ -22,11 +22,11 @@ function Header(){
 function NavItem({display}){
     return(
         <ul className="text-white/[0.8]">
-            <li className={`${display} mx-3 text-white`}>Movies</li>
-            <li className={`${display} mx-3`}>Sports</li>
-            <li className={`${display} mx-3`}>TV Series</li>
-            <li className={`${display} mx-3`}>Kids</li>
-            <li className={`${display} mx-3`}>More <i className="fa-solid fa-caret-down"></i></li>
+            <li className={`${display} mx-3 text-white cursor-pointer`}>Movies</li>
+            <li className={`${display} mx-3 cursor-pointer`}>Sports</li>
+            <li className={`${display} mx-3 cursor-pointer`}>TV Series</li>
+            <li className={`${display} mx-3 cursor-pointer`}>Kids</li>
+            <li className={`${display} mx-3 cursor-pointer`}>More <i className="fa-solid fa-caret-down"></i></li>
         </ul>
     )
 }

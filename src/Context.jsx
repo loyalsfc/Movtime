@@ -3,7 +3,7 @@ import { createContext } from "react";
 const Context = createContext()
 
 function ContextProvider({children}){
-    const key = 'ac9b441e9078e7b82089a236ca889b53'
+    const key = import.meta.env.VITE_API_KEY
     const imagePath = 'https://image.tmdb.org/t/p/w500' 
 
     return(

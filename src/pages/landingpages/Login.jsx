@@ -1,10 +1,10 @@
 import { useState } from "react"
 import WelcomeNote from "./WelcomeNote"
-import Google from "../../assets/Google.png"
 import { Link } from "react-router-dom"
 import image from "../../assets/image2.png"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom"
+import GoogleLogin from "./GoogleLogin"
 
 
 function Login(){
@@ -14,7 +14,6 @@ function Login(){
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.id]: e.target.value})
-        console.log(formData)
     }
 
     const handleSubmit = (e) => {
@@ -22,18 +21,20 @@ function Login(){
         signInWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;
-            console.log(user)
-            alert('sign in successful')
-            navigate('/dashboard')
-            // ...
+                const user = userCredential.user;
+                console.log(user)
+                alert('sign in successful')
+                navigate('/dashboard')
             })
             .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorCode)
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorCode)
             });
     }
+
+    
+
     return (
         <div className="flex bg-primary-dark justify-between">
             <div className="login-page w-full md:w-2/5 px-2">
@@ -41,12 +42,7 @@ function Login(){
                     title="Welcome back"
                     subtitle = "Welcome back! Please enter your details."
                 />
-                <div className='mx-auto w-[400px] max-w-full'>
-                    <button className="google-login">
-                        <img src={Google} className="mr-3" />
-                        <span>Log in with Google</span>
-                    </button>
-                </div>
+               <GoogleLogin />
                 <div className="flex items-center my-10 mx-auto w-[400px] max-w-full">
                     <div className="w-full h-[1px] bg-[#4D4B4B]"></div>
                     <div className="mx-9">or</div>

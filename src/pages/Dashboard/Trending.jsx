@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function Trending({title, year, label, imgUrl, id}){
     return(
-        <Link to={`movie/${id}`}>
+        <Link to={`/movie/${id}`}>
             <div 
                 className='relative w-[16.875rem] h-[13.18rem] p-3 shrink-0 text-white flex items-end rounded bg-no-repeat bg-cover bg-center'        >
                 <img className="absolute h-full w-full top-0 left-0" src={imgUrl}/>

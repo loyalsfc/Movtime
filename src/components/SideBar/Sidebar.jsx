@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Logo from '../../assets/movtimelogo.svg'
 import NavItem from './NavItem'
 
 
 function Sidebar(){
+    const activeClassName = "font-medium active"
+
     return(
         <aside className='scroll bg-secondary-dark text-white/[0.80] py-5 overflow-y-scroll h-screen w-12 text-center md:text-left md:w-1/5 shrink-0'>
             <div className='md:pl-3 lg:pl-9 mb-12'>
@@ -15,7 +17,14 @@ function Sidebar(){
             <nav>
                 <h4 className='nav-title'>MENU</h4>
                 <ul>
-                    <NavItem name="Browse" icon="fa-brands fa-bandcamp" bold="font-medium active"/>
+                    <NavLink
+                        to="/"
+                        className={({isActive}) => 
+                            isActive ? activeClassName : undefined
+                        }
+                    >
+                        <NavItem name="Browse" icon="fa-brands fa-bandcamp"/>
+                    </NavLink>
                     <NavItem name="Watchlist" icon="fa-solid fa-clapperboard" />
                     <NavItem name="Coming Soon" icon="fa-solid fa-calendar" />                    
                 </ul>

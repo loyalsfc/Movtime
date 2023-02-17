@@ -40,10 +40,10 @@
     @apply block mb-6 py-2 w-full bg-transparent focus:outline-0 border-b border-b-[#4D4B4B] placeholder-[#BABABA]
   }
   .google-login{
-    @apply flex items-center justify-center border rounded-2xl w-full  py-4 text-[#fefefe]
+    @apply flex items-center justify-center border rounded-2xl w-full  py-4 text-[#fefefe] hover:bg-[#4D4B4B]
   }
   .btn-auth{
-    @apply bg-white mt-10 font-semibold text-[#191919] py-[14px] rounded-2xl w-full
+    @apply bg-white mt-10 font-semibold text-[#191919] py-[14px] rounded-2xl w-full hover:opacity-80
   }
   .login-page{
     @apply h-screen text-[#fefefe] w-full w-[600px] max-w-full flex flex-col justify-center shrink-0

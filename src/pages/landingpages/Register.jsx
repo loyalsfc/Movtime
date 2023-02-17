@@ -1,22 +1,24 @@
 import { useState } from "react"
 import image from "../../assets/image.png"
-import Google from "../../assets/Google.png"
 import WelcomeNote from "./WelcomeNote"
 import { Link } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-
+import { useDispatch, useSelector } from "react-redux";
 import app from "../../firebase"
+import GoogleLogin from "./GoogleLogin"
+import { setUser } from "../../features/user";
 
 
 function Register(){
     const [formData, setFormData] = useState({displayName: "", email: "", password: ""})
-
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch()
     const auth = getAuth(app);
     
+        console.log(user)
 
     const handleChange = (e) => {
-        console.log(e.target.value)
         setFormData({...formData, [e.target.id]: e.target.value})
     }
 
@@ -29,8 +31,7 @@ function Register(){
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                // ...
-                console.log(user)
+                dispatch(setUser(user))
                 alert('Successfully created')
             })
             .catch((error) => {
@@ -51,7 +52,7 @@ function Register(){
                     title="Create an account"
                     subtitle="Let’s get started with your 30 days free trial"
                 />
-                <form className="mx-auto w-[400px] max-w-full" onSubmit={handleSubmit}>
+                <form className="mx-auto w-[400px] max-w-full mb-8" onSubmit={handleSubmit}>
                     <input 
                         type="text" 
                         id="displayName"
@@ -77,11 +78,8 @@ function Register(){
                         className="input-item mb-0"
                     />
                     <button className="btn-auth">Create account</button>
-                    <button className="google-login mt-8"> 
-                        <img src={Google} className="mr-3"/>
-                        <span className="">Sign up with Google</span>
-                    </button>
                 </form>
+                <GoogleLogin />
                 <p className="text-sm text-[#BABABA]/[0.85] text-center mt-9">Already have an account ? <Link to="/login"> <span className="text-[#FEFEFE]">Log in</span></Link></p>
             </div>
         </div>
