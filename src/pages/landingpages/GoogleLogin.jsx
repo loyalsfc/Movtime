@@ -3,10 +3,13 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Google from "../../assets/Google.png"
 import { provider } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../features/user';
 
 function GoogleLogin() {
     const auth = getAuth()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     
     const signInWithGoogle = () => {
         signInWithPopup(auth, provider)
@@ -19,6 +22,8 @@ function GoogleLogin() {
             // IdP data available using getAdditionalUserInfo(result)
             // ...
             console.log(user)
+            console.log(result)
+            dispatch(setUser(result))
             alert('sign in successful')
             navigate('/dashboard')
         }).catch((error) => {

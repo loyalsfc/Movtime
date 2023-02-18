@@ -1,7 +1,7 @@
 import { useState } from "react"
 import image from "../../assets/image.png"
 import WelcomeNote from "./WelcomeNote"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,8 +15,13 @@ function Register(){
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch()
     const auth = getAuth(app);
+    const navigate = useNavigate()
     
-        console.log(user)
+    console.log(user)
+
+    if(user){
+        navigate('/dashboard')
+    }
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.id]: e.target.value})
