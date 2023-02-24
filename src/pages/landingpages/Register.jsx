@@ -6,8 +6,8 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import app from "../../firebase"
-import GoogleLogin from "./GoogleLogin"
-import { setUser } from "../../features/user";
+import GoogleLogin from "./GoogleLogin" 
+import { setUser } from "../../features/userSlice";
 
 
 function Register(){
@@ -19,14 +19,9 @@ function Register(){
     
     console.log(user)
 
-    if(user){
-        navigate('/dashboard')
-    }
-
     const handleChange = (e) => {
         setFormData({...formData, [e.target.id]: e.target.value})
     }
-
 
     const provider = new GoogleAuthProvider();
 

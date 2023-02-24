@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Header from "../../components/Header"
 import Label from "./Labels"
 import TopRated from "./TopRated"
@@ -9,6 +10,11 @@ function Dashboard(){
     const imagePath = 'https://image.tmdb.org/t/p/w500' 
     const [topRatedMovies, settopRatedMovies] = useState([])
     const [trendingMovies, setTrendingMovies] = useState([])
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.user)
+    const counter = useSelector((state) => state.counter)
+
+    console.log(counter)
 
     useEffect (() => {
         // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)

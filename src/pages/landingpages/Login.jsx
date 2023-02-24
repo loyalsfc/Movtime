@@ -5,13 +5,15 @@ import image from "../../assets/image2.png"
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom"
 import GoogleLogin from "./GoogleLogin"
-
+import { setUser } from "../../features/userSlice";
+import { useDispatch, useSelector } from "react-redux"; 
 
 function Login(){
     const auth = getAuth();
     const [formData, setFormData] = useState({email: "", password: "", rememberSign: false})
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
+    
     const handleChange = (e) => {
         setFormData({...formData, [e.target.id]: e.target.value})
     }
@@ -22,7 +24,13 @@ function Login(){
             .then((userCredential) => {
             // Signed in 
                 const user = userCredential.user;
-                console.log(user)
+                
+                dispatch(setUser({
+                    email: user.email,
+                    name: user.displayName,
+                    phone: user.phoneNumber,
+                    photoURL: user.photoURL
+                }))
                 alert('sign in successful')
                 navigate('/dashboard')
             })

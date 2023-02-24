@@ -4,7 +4,7 @@ import Google from "../../assets/Google.png"
 import { provider } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../features/user';
+import { setUser } from '../../features/userSlice';
 
 function GoogleLogin() {
     const auth = getAuth()

@@ -1,7 +1,12 @@
 import bg from "../../assets/bg.jpg"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 function Home(){
+    const user = useSelector((state) => state.user)
+
+    console.log(user)
+    
     const style = {
         backgroundImage: `linear-gradient(135deg, rgba(25,24,23,0.95) 40%, rgba(0,0,0,0.7)), url(${bg})`,
     }
@@ -52,7 +57,7 @@ function Home(){
                     </defs>
                 </svg>
             </div>
-            <Link to="/register">
+            <Link to={user.user ? "/dashboard" : "/register"}>
                 <button className="text-2xl h-16 px-6 bg-primary-red text-white hover:opacity-80"><span>Get Started</span> <i className="fa-solid fa-angle-right"></i></button>
             </Link>
         </div>
