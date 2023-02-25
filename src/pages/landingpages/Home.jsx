@@ -1,12 +1,19 @@
 import bg from "../../assets/bg.jpg"
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import userAuth from "../../utils/userAuth"
+import { useEffect } from "react"
+import { setUser } from "../../features/userSlice"
 
 function Home(){
+    const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
+    const {currentUser} = userAuth()
 
-    console.log(user)
-    
+    useEffect(()=>{
+        dispatch(setUser(currentUser))
+    },[currentUser])
+
     const style = {
         backgroundImage: `linear-gradient(135deg, rgba(25,24,23,0.95) 40%, rgba(0,0,0,0.7)), url(${bg})`,
     }

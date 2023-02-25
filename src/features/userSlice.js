@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
     user: null
@@ -11,7 +11,7 @@ export const userSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload;
         }
-    }
+    },
 })
 
 export const {setUser} = userSlice.actions

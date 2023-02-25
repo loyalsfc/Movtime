@@ -12,9 +12,8 @@ function Dashboard(){
     const [trendingMovies, setTrendingMovies] = useState([])
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
-    const counter = useSelector((state) => state.counter)
 
-    console.log(counter)
+    console.log(user)
 
     useEffect (() => {
         // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)

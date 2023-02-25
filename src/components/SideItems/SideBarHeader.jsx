@@ -1,5 +1,8 @@
+import { useSelector } from "react-redux"
 
 function SideHeader(){
+    const {user} = useSelector(state => state.user)
+    console.log(user)
     return (
         <header className="flex items-center text-white mb-6" >
             <div className="mr-7 relative">
@@ -8,9 +11,9 @@ function SideHeader(){
             </div>
             <div className="flex items-center">
                 <div className="h-9 w-9 rounded-full overflow-hidden inline-block mr-2">
-                    <img src="https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+                    <img src={user?.photoURL ? user?.photoURL : "https://static.vecteezy.com/system/resources/previews/004/991/321/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-vector.jpg"} alt="" />
                 </div>
-                <span className="text-sm">James Maddison</span>
+                <span className="text-sm">{user?.name}</span>
             </div>
         </header>
     )

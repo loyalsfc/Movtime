@@ -1,38 +1,34 @@
 import { useState } from "react"
 import image from "../../assets/image.png"
 import WelcomeNote from "./WelcomeNote"
-import { Link, useNavigate } from "react-router-dom"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { Link } from "react-router-dom"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import app from "../../firebase"
+import {auth} from "../../firebase"
 import GoogleLogin from "./GoogleLogin" 
 import { setUser } from "../../features/userSlice";
 
 
 function Register(){
     const [formData, setFormData] = useState({displayName: "", email: "", password: ""})
-    const user = useSelector((state) => state.user);
     const dispatch = useDispatch()
-    const auth = getAuth(app);
-    const navigate = useNavigate()
-    
-    console.log(user)
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.id]: e.target.value})
     }
-
-    const provider = new GoogleAuthProvider();
 
     const handleSubmit = (e) => {
         e.preventDefault()
         createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
                 // Signed in 
-                const user = userCredential.user;
-                dispatch(setUser(user))
-                alert('Successfully created')
+                updateProfile(auth.currentUser, {
+                    displayName: formData.displayName
+                }).then(()=>{
+                    user = auth.currentUser;
+                })
+                // dispatch(setUser(user))
+                // alert('Successfully created')
             })
             .catch((error) => {
                 const errorCode = error.code;

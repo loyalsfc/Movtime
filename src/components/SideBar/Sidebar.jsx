@@ -1,10 +1,20 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Logo from '../../assets/movtimelogo.svg'
 import NavItem from './NavItem'
-
+import { getAuth, signOut } from "firebase/auth";
+import { auth } from '../../firebase';
 
 function Sidebar(){
     const activeClassName = "font-medium active"
+    const navigate = useNavigate()
+
+    const logout = () => {
+        signOut(auth).then(() => {
+            navigate('/')        
+        }).catch((error) => {
+        // An error happened.
+        });
+    }
 
     return(
         <aside className='scroll bg-secondary-dark text-white/[0.80] py-5 overflow-y-scroll h-screen w-12 text-center md:text-left md:w-1/5 shrink-0'>
@@ -35,8 +45,12 @@ function Sidebar(){
                 </ul>
                 <h4 className='nav-title mt-10'>PROFILE</h4>
                 <ul>
-                    <NavItem name="Settings" icon="fa-solid fa-gear" />
-                    <NavItem name="Logout" icon="fa-solid fa-right-from-bracket" />                    
+                    <li>
+                        <NavItem name="Settings" icon="fa-solid fa-gear" />
+                    </li>
+                    <li onClick={logout}>
+                        <NavItem name="Logout" icon="fa-solid fa-right-from-bracket" />
+                    </li>
                 </ul>
             </nav>
         </aside>

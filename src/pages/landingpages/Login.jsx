@@ -6,7 +6,7 @@ import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvide
 import { useNavigate } from "react-router-dom"
 import GoogleLogin from "./GoogleLogin"
 import { setUser } from "../../features/userSlice";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch } from "react-redux";
 
 function Login(){
     const auth = getAuth();
@@ -24,24 +24,23 @@ function Login(){
             .then((userCredential) => {
             // Signed in 
                 const user = userCredential.user;
-                
-                dispatch(setUser({
-                    email: user.email,
-                    name: user.displayName,
-                    phone: user.phoneNumber,
-                    photoURL: user.photoURL
-                }))
                 alert('sign in successful')
+                dispatch(setUser({
+                    email: user?.email,
+                    name: user?.displayName,
+                    phone: user?.phoneNumber,
+                    photoURL: user?.photoURL
+                }))
                 navigate('/dashboard')
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                // auth/network-request-failed
+                // auth/wrong-password
                 alert(errorCode)
             });
     }
-
-    
 
     return (
         <div className="flex bg-primary-dark justify-between">
