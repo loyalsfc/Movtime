@@ -1,14 +1,13 @@
 import { useEffect, useContext, useState } from "react"
 import { useParams } from "react-router-dom"
 import SideHeader from "../../components/SideItems/SideBarHeader"
-import { Context } from "../../Context"
 import RelatedMovieItem from "./RelatedMovieItem"
 
 function RelativedMovie(){
     const {id} = useParams()
-    const {key, imagePath} = useContext(Context)
     const [similarMovie, setSimilarMovie] = useState([])
-
+    const imagePath = ""
+    const key = ""
 
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`)

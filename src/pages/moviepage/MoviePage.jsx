@@ -2,14 +2,12 @@ import { useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import Sidebar from "../../components/SideBar/Sidebar";
-import { Context } from "../../Context";
 import RelativedMovie from "./RelatedMovie";
 
 function MoviePage(){
-    const {imagePath, key} = useContext(Context)
     const [movieDetail, setMovieDetail] = useState(false)
     const {id} = useParams()
-    useState
+    const imagePath = ""
 
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)
