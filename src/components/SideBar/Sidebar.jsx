@@ -28,7 +28,7 @@ function Sidebar(){
                 <h4 className='nav-title'>MENU</h4>
                 <ul>
                     <NavLink
-                        to="/"
+                        to="/dashboard"
                         className={({isActive}) => 
                             isActive ? activeClassName : undefined
                         }
@@ -45,9 +45,7 @@ function Sidebar(){
                 </ul>
                 <h4 className='nav-title mt-10'>PROFILE</h4>
                 <ul>
-                    <li>
-                        <NavItem name="Settings" icon="fa-solid fa-gear" />
-                    </li>
+                    <NavItem name="Settings" icon="fa-solid fa-gear" />
                     <li onClick={logout}>
                         <NavItem name="Logout" icon="fa-solid fa-right-from-bracket" />
                     </li>

@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Header from "../../components/Header"
+import SideItems from "../../components/SideItems/SideItems"
 import Label from "./Labels"
 import TopRated from "./TopRated"
 import Trending from "./Trending"
 
 function Dashboard(){
-    const key = 'ac9b441e9078e7b82089a236ca889b53'
+    const key = import.meta.env.VITE_API_KEY
     const imagePath = 'https://image.tmdb.org/t/p/w500' 
     const [topRatedMovies, settopRatedMovies] = useState([])
     const [trendingMovies, setTrendingMovies] = useState([])
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
 
-    console.log(user)
-
     useEffect (() => {
-        // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)
-        // .then((res, req) => res.json())
-        // .then(data => settopRatedMovies(data.results))
+        fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)
+        .then((res, req) => res.json())
+        .then(data => settopRatedMovies(data.results))
 
-        // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
-        // .then((res, req) => res.json())
-        // .then(data => setTrendingMovies(data.results))
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
+        .then((res, req) => res.json())
+        .then(data => setTrendingMovies(data.results))
     },[])
 
     const topRatedDisplay = topRatedMovies.map(item => {
@@ -54,30 +53,34 @@ function Dashboard(){
                 }
 
     return(
-        <main className="scroll bg-primary-dark w-[calc(100%-3rem)] md:w-4/5 lg:w-[55%] overflow-y-scroll h-screen shrink-0" >
-            <section className="h-[450px] bg-center bg-cover bg-no-repeat" style={style}>
-                <Header />
-                <div className="mt-12 px-4 sm:px-6" >
-                    <h2 className="text-2xl sm:text-[2rem] md:text-[2.5rem] sm:leading-[150%] font-semibold text-white max-w-[455px] mb-6">Doctor Strange in the Multiverse of Madness</h2>
-                    <Label title='Action' />
-                    <Label title='Adventure' />
-                    <Label title='Fantasy' />
-                    <button className="block bg-primary-red text-white py-3 px-10 mt-8 rounded-full">Watch <i className="fa-solid fa-circle-play ml-4"></i></button>
-                </div>
-            </section>
-            <section className="p-6">
-                <h3 className="text-white font-bold mb-3">Trending Movies</h3>
-                <div className="movies-container">
-                    {trendingDisplay}
-                </div>
-            </section>
-            <section className="p-6">
-                <h3 className="text-white font-bold mb-3">Top Rated Movies</h3>
-                <div className="movies-container">
-                    {topRatedDisplay}
-                </div>
-            </section>
-        </main>
+        <>
+            <main className="scroll bg-primary-dark w-[calc(100%-3rem)] md:w-4/5 lg:w-[55%] overflow-y-scroll h-screen shrink-0" >
+                <section className="h-[450px] bg-center bg-cover bg-no-repeat" style={style}>
+                    <Header />
+                    <div className="mt-12 px-4 sm:px-6" >
+                        <h2 className="text-2xl sm:text-[2rem] md:text-[2.5rem] sm:leading-[150%] font-semibold text-white max-w-[455px] mb-6">Doctor Strange in the Multiverse of Madness</h2>
+                        <Label title='Action' />
+                        <Label title='Adventure' />
+                        <Label title='Fantasy' />
+                        <button className="block bg-primary-red text-white py-3 px-10 mt-8 rounded-full">Watch <i className="fa-solid fa-circle-play ml-4"></i></button>
+                    </div>
+                </section>
+                <section className="p-6">
+                    <h3 className="text-white font-bold mb-3">Trending Movies</h3>
+                    <div className="movies-container">
+                        {trendingDisplay}
+                    </div>
+                </section>
+                <section className="p-6">
+                    <h3 className="text-white font-bold mb-3">Top Rated Movies</h3>
+                    <div className="movies-container">
+                        {topRatedDisplay}
+                    </div>
+                </section>
+            </main>
+            <SideItems />
+        </>
+
     )
 }
 

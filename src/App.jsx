@@ -1,17 +1,22 @@
-import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from './components/SideBar/Sidebar'
-import SideItems from './components/SideItems/SideItems'
-import Dashboard from './pages/Dashboard/Dashboard'
+import Login from './pages/landingpages/Login'
+import userAuth from './utils/userAuth'
 
 function App() {
+  const {currentUser} = userAuth()
 
   return (
-      <div className='flex'>
-        <Sidebar />
-        <Dashboard />
-        <SideItems />
-      </div>
+      <>
+        {!currentUser ?
+          (
+            <Login />
+          ):(<div className='flex'>
+            <Sidebar />
+            {<Outlet/>}
+          </div>)
+        }
+      </>
   )
 }
 

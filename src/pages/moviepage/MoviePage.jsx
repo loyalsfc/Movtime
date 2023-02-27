@@ -6,8 +6,9 @@ import RelativedMovie from "./RelatedMovie";
 
 function MoviePage(){
     const [movieDetail, setMovieDetail] = useState(false)
+    const imagePath = 'https://image.tmdb.org/t/p/w500' 
+    const key = import.meta.env.VITE_API_KEY
     const {id} = useParams()
-    const imagePath = ""
 
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)

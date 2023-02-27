@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 
 function SideHeader(){
     const {user} = useSelector(state => state.user)
-    console.log(user)
+
     return (
         <header className="flex items-center text-white mb-6" >
             <div className="mr-7 relative">
