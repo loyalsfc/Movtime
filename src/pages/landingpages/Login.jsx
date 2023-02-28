@@ -26,6 +26,7 @@ function Login(){
                 const user = userCredential.user;
                 alert('sign in successful')
                 dispatch(setUser({
+                    id: user?.uid,
                     email: user?.email,
                     name: user?.displayName,
                     phone: user?.phoneNumber,

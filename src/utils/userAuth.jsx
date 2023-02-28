@@ -12,9 +12,11 @@ const userAuth = () => {
     useEffect(()=>{    
       onAuthStateChanged(auth, (user) => {
         if (user) {
+          console.log(user)
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           const userObject = {
+            id: user?.uid,
             email: user?.email,
             name: user?.displayName,
             phone: user?.phoneNumber,
