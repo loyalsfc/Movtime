@@ -33,19 +33,19 @@ function Sidebar(){
                             isActive ? activeClassName : undefined
                         }
                     >
-                        <NavItem name="Browse" icon="fa-brands fa-bandcamp"/>
+                        <li><NavItem name="Browse" icon="fa-brands fa-bandcamp"/></li>
                     </NavLink>
-                    <NavItem name="Watchlist" icon="fa-solid fa-clapperboard" />
-                    <NavItem name="Coming Soon" icon="fa-solid fa-calendar" />                    
+                    <li><NavItem name="Watchlist" icon="fa-solid fa-clapperboard" /></li>
+                    <li><NavItem name="Coming Soon" icon="fa-solid fa-calendar" /></li>
                 </ul>
                 <h4 className='nav-title mt-10'>SOCIAL</h4>
                 <ul>
-                    <NavItem name="Friend" icon="fa-solid fa-user-group" />
-                    <NavItem name="Parties" icon="fa-solid fa-users" />                    
+                    <li><NavItem name="Friend" icon="fa-solid fa-user-group" /></li>
+                    <li><NavItem name="Parties" icon="fa-solid fa-users" /></li>
                 </ul>
                 <h4 className='nav-title mt-10'>PROFILE</h4>
                 <ul>
-                    <NavItem name="Settings" icon="fa-solid fa-gear" />
+                    <li><NavItem name="Settings" icon="fa-solid fa-gear" /></li>
                     <li onClick={logout}>
                         <NavItem name="Logout" icon="fa-solid fa-right-from-bracket" />
                     </li>

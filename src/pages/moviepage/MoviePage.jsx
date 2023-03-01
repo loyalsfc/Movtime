@@ -1,33 +1,56 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore"; 
+import { addDoc, collection, getDocs } from "firebase/firestore"; 
 import Header from "../../components/Header";
 import Sidebar from "../../components/SideBar/Sidebar";
 import MovieReview from "./MovieReview";
 import RelativedMovie from "./RelatedMovie";
 import db from "../../firebase";
 import { useSelector } from "react-redux";
+import userAuth from "../../utils/userAuth";
 
 function MoviePage(){
-    const [movieDetail, setMovieDetail] = useState(false)
+    const [movieDetail, setMovieDetail] = useState(false);
+    const [wishlist, setWishlist] = useState([]);
+    const wishListBtn = useRef()
     const imagePath = 'https://image.tmdb.org/t/p/w500' 
     const key = import.meta.env.VITE_API_KEY
     const {id} = useParams()
-    const user = useSelector(state => state.user)
-    console.log(user)
-
+    const {currentUser: user} = userAuth()
+    
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)
         .then((res, req) => res.json())
         .then(data => setMovieDetail(data))
-    }, [id])
+    }, [id, key])
 
-    const saveWishList = async() => {
+    useEffect(()=>{
+        if(user?.id){
+            fetchWishList()
+        }
+    },[user])
+
+    async function fetchWishList(){
+        const querySnapshot = await getDocs(collection(db, "users", "wishlist", user?.id));
+        let items = []
+        querySnapshot.forEach((doc) => {
+            items.push({
+                id: doc.id,
+                data: doc.data().wishlistItems
+            })
+        });
+        setWishlist(items);
+    }
+
+    const saveWishList = async(e) => {
+        const button = e.currentTarget
+        button.innerHTML = "<div class='loader h-5 w-5 rounded-full border-2 border-gray-600 border-r-2 border-r-primary-red'></div>"
         try {
-            const docRef = await addDoc(collection(db, "users", 'wishlist', user?.user?.id), {
-                wishlistItems: [id]
+            const docRef = await addDoc(collection(db, "users", "wishlist", user?.id), {
+                wishlistItems: id
             });          
             console.log("Document written with ID: ", docRef.id);
+            button.innerHTML = '<i class="fa-solid fa-bookmark"></i>'
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -57,8 +80,10 @@ function MoviePage(){
                     <article className="my-4 px-4 sm:px-6">
                         <h3 className="text-xl font-semibold flex mb-2">
                             <span>{movieDetail.title}</span>
-                            <i className="fa-solid fa-share-nodes inline-block ml-auto text-primary-red"></i>
-                            <i onClick={saveWishList} className="fa-regular fa-bookmark ml-4 text-primary-red"></i>
+                            <i className="fa-solid fa-share-nodes mr-4 inline-block ml-auto text-primary-red"></i>
+                            <button className="flex text-primary-red" onClick={(e)=>saveWishList(e)} ref={wishListBtn}>
+                                <i className={`${wishlist.some(item => item.data === id) ? 'fa-solid' : 'fa-regular'} fa-bookmark`}></i>
+                            </button>
                         </h3>
                         <div className="flex items-center flex-wrap" >
                             <p className="text-sm mr-6 mb-2 md:mb-0">

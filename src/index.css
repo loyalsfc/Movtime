@@ -62,3 +62,12 @@
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
 }
+
+.loader{
+  animation: loading 0.3s ease-in-out infinite ;
+}
+
+@keyframes loading {
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}

@@ -15,7 +15,7 @@ function MovieReview({id, apiKey}) {
             <h3 className='text-2xl font-bold mt-12 mb-10'>Reviews</h3>
             <div>
                 {
-                    reviews.length == 0 ? <div>No review found</div> :
+                    reviews.length === 0 ? <div>No review found</div> :
                     reviews.map(item => {
                         let reviewDate = new Date(item?.created_at)
                         return(
@@ -30,7 +30,7 @@ function MovieReview({id, apiKey}) {
                                         />
                                     </div>
                                     <div>
-                                        <h4 className='text-xl font-semibold text-primary-red'>{item?.author}</h4>
+                                        <h4 className='text-xl font-semibold text-primary-red capitalize'>{item?.author}</h4>
                                         <span>{`${reviewDate.getDate()}/${reviewDate.getMonth() + 1}/${reviewDate.getFullYear()}`}</span>
                                     </div>
                                 </div>
